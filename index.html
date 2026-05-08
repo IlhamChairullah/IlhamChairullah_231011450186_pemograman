@@ -6,13 +6,16 @@
 
 <title>Kalkulator Modern</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -20,99 +23,117 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    background:#f1f1f1;
-    transition:0.3s;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    transition:0.4s;
 }
 
 body.dark{
-    background:#1e1e1e;
+    background:linear-gradient(135deg,#000000,#434343);
 }
 
 .calculator{
-    width:340px;
-    background:white;
-    padding:20px;
-    border-radius:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    transition:0.3s;
-}
-
-body.dark .calculator{
-    background:#2d2d2d;
-    color:white;
+    width:360px;
+    padding:25px;
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    transition:0.4s;
 }
 
 .title{
     text-align:center;
-    margin-bottom:10px;
+    color:white;
+    margin-bottom:8px;
+    font-size:28px;
+    letter-spacing:1px;
 }
 
 .identitas{
     text-align:center;
-    margin-bottom:15px;
+    color:#dcdcdc;
+    margin-bottom:20px;
     font-size:14px;
+    line-height:22px;
 }
 
 .display{
     width:100%;
-    height:70px;
-    margin-bottom:15px;
+    height:80px;
     border:none;
-    border-radius:10px;
+    outline:none;
+    border-radius:15px;
+    margin-bottom:20px;
+    padding:15px;
+    font-size:32px;
     text-align:right;
-    padding:10px;
-    font-size:28px;
-    background:#e9e9e9;
-}
-
-body.dark .display{
-    background:#444;
+    background:rgba(255,255,255,0.15);
     color:white;
+    box-shadow:inset 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .buttons{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
+    gap:12px;
 }
 
 button{
-    padding:18px;
-    font-size:20px;
+    height:65px;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
+    font-size:22px;
     cursor:pointer;
     transition:0.2s;
+    font-weight:bold;
 }
 
 button:hover{
-    transform:scale(1.05);
+    transform:translateY(-3px);
+    box-shadow:0 5px 10px rgba(0,0,0,0.3);
 }
 
 .number{
-    background:#dcdcdc;
+    background:rgba(255,255,255,0.15);
+    color:white;
 }
 
 .operator{
-    background:orange;
+    background:#ff9500;
     color:white;
 }
 
 .equal{
-    background:#28a745;
+    background:#00c853;
     color:white;
+    grid-column:span 2;
 }
 
 .clear{
-    background:red;
+    background:#ff1744;
+    color:white;
+}
+
+.delete{
+    background:#2979ff;
     color:white;
 }
 
 .toggle{
     width:100%;
+    height:50px;
     margin-bottom:15px;
-    background:#007bff;
+    background:#7c4dff;
     color:white;
+    font-size:16px;
+}
+
+.footer{
+    text-align:center;
+    color:#cfcfcf;
+    margin-top:18px;
+    font-size:12px;
 }
 
 @media(max-width:400px){
@@ -122,7 +143,7 @@ button:hover{
     }
 
     button{
-        padding:15px;
+        height:58px;
         font-size:18px;
     }
 
@@ -139,11 +160,12 @@ button:hover{
 
     <p class="identitas">
         Nama : Ilham Chairullah <br>
-        NIM : 231011450186
+        NIM : 231011450186 <br>
+        Mata Kuliah : Pemrograman Web I
     </p>
 
     <button class="toggle" onclick="toggleMode()">
-        Light / Dark Mode
+        🌙 Light / Dark Mode
     </button>
 
     <input type="text" id="display" class="display" readonly>
@@ -152,11 +174,11 @@ button:hover{
 
         <button class="clear" onclick="clearDisplay()">C</button>
 
-        <button class="operator" onclick="appendValue('/')">/</button>
+        <button class="operator" onclick="appendValue('/')">÷</button>
 
         <button class="operator" onclick="appendValue('%')">%</button>
 
-        <button class="operator" onclick="deleteLast()">⌫</button>
+        <button class="delete" onclick="deleteLast()">⌫</button>
 
         <button class="number" onclick="appendValue('7')">7</button>
 
@@ -164,7 +186,7 @@ button:hover{
 
         <button class="number" onclick="appendValue('9')">9</button>
 
-        <button class="operator" onclick="appendValue('*')">*</button>
+        <button class="operator" onclick="appendValue('*')">×</button>
 
         <button class="number" onclick="appendValue('4')">4</button>
 
@@ -172,7 +194,7 @@ button:hover{
 
         <button class="number" onclick="appendValue('6')">6</button>
 
-        <button class="operator" onclick="appendValue('-')">-</button>
+        <button class="operator" onclick="appendValue('-')">−</button>
 
         <button class="number" onclick="appendValue('1')">1</button>
 
@@ -190,6 +212,10 @@ button:hover{
 
     </div>
 
+    <p class="footer">
+        UTS Pemrograman Web 1
+    </p>
+
 </div>
 
 <script>
@@ -198,12 +224,12 @@ const display = document.getElementById("display");
 
 function appendValue(value){
 
-    // Validasi karakter
     const allowed = "0123456789+-*/%.";
 
     if(allowed.includes(value)){
         display.value += value;
     }
+
 }
 
 function clearDisplay(){
@@ -216,7 +242,6 @@ function deleteLast(){
 
 function calculate(){
 
-    // Validasi input kosong
     if(display.value === ""){
         alert("Input tidak boleh kosong!");
         return;
@@ -224,7 +249,6 @@ function calculate(){
 
     try{
 
-        // Menghitung persen
         let expression = display.value.replace(/%/g,"/100");
 
         display.value = eval(expression);
@@ -233,6 +257,7 @@ function calculate(){
     catch{
         alert("Input tidak valid!");
     }
+
 }
 
 function toggleMode(){
