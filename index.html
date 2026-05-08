@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kalkulator Modern</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Kalkulator Minimalis</title>
 
 <style>
 
@@ -15,7 +12,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -23,54 +20,90 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
-    background:linear-gradient(135deg,#141e30,#243b55);
-    transition:0.4s;
+    background:#f5f7fa;
+    transition:0.3s;
 }
 
+/* MODE MALAM */
 body.dark{
-    background:linear-gradient(135deg,#000000,#434343);
+    background:#0f172a;
 }
 
 .calculator{
-    width:360px;
+    width:340px;
+    background:white;
     padding:25px;
-    border-radius:25px;
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,0.1);
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-    transition:0.4s;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+/* CALCULATOR MODE MALAM */
+body.dark .calculator{
+    background:#1e293b;
 }
 
 .title{
     text-align:center;
-    color:white;
     margin-bottom:8px;
-    font-size:28px;
-    letter-spacing:1px;
+    color:#2d3436;
+    font-size:26px;
+    font-weight:600;
+}
+
+/* TITLE MODE MALAM */
+body.dark .title{
+    color:white;
 }
 
 .identitas{
     text-align:center;
-    color:#dcdcdc;
-    margin-bottom:20px;
+    margin-bottom:18px;
+    color:#636e72;
     font-size:14px;
     line-height:22px;
 }
 
+/* IDENTITAS MODE MALAM */
+body.dark .identitas{
+    color:#cbd5e1;
+}
+
+.toggle{
+    width:100%;
+    height:45px;
+    border:none;
+    border-radius:12px;
+    background:#2d3436;
+    color:white;
+    cursor:pointer;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+/* BUTTON TOGGLE MODE MALAM */
+body.dark .toggle{
+    background:#111827;
+}
+
 .display{
     width:100%;
-    height:80px;
+    height:75px;
     border:none;
     outline:none;
     border-radius:15px;
-    margin-bottom:20px;
+    margin-bottom:18px;
     padding:15px;
-    font-size:32px;
     text-align:right;
-    background:rgba(255,255,255,0.15);
+    font-size:32px;
+    background:#f1f2f6;
+    color:#2d3436;
+}
+
+/* DISPLAY MODE MALAM */
+body.dark .display{
+    background:#334155;
     color:white;
-    box-shadow:inset 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .buttons{
@@ -80,60 +113,61 @@ body.dark{
 }
 
 button{
-    height:65px;
+    height:60px;
     border:none;
     border-radius:15px;
-    font-size:22px;
+    font-size:20px;
     cursor:pointer;
     transition:0.2s;
-    font-weight:bold;
 }
 
 button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 5px 10px rgba(0,0,0,0.3);
+    transform:scale(1.03);
 }
 
 .number{
-    background:rgba(255,255,255,0.15);
+    background:#ecf0f1;
+    color:#2d3436;
+}
+
+/* ANGKA MODE MALAM */
+body.dark .number{
+    background:#475569;
     color:white;
 }
 
 .operator{
-    background:#ff9500;
+    background:#74b9ff;
     color:white;
-}
-
-.equal{
-    background:#00c853;
-    color:white;
-    grid-column:span 2;
 }
 
 .clear{
-    background:#ff1744;
+    background:#ff7675;
     color:white;
 }
 
 .delete{
-    background:#2979ff;
+    background:#a29bfe;
     color:white;
 }
 
-.toggle{
-    width:100%;
-    height:50px;
-    margin-bottom:15px;
-    background:#7c4dff;
-    color:white;
-    font-size:16px;
+.equal{
+    background:#55efc4;
+    color:#2d3436;
+    grid-column:span 2;
+    font-weight:bold;
 }
 
 .footer{
     text-align:center;
-    color:#cfcfcf;
-    margin-top:18px;
+    margin-top:15px;
     font-size:12px;
+    color:#636e72;
+}
+
+/* FOOTER MODE MALAM */
+body.dark .footer{
+    color:#cbd5e1;
 }
 
 @media(max-width:400px){
@@ -143,7 +177,7 @@ button:hover{
     }
 
     button{
-        height:58px;
+        height:55px;
         font-size:18px;
     }
 
@@ -156,16 +190,16 @@ button:hover{
 
 <div class="calculator">
 
-    <h2 class="title">Kalkulator Modern</h2>
+    <h2 class="title">Kalkulator</h2>
 
     <p class="identitas">
         Nama : Ilham Chairullah <br>
         NIM : 231011450186 <br>
-        Mata Kuliah : Pemrograman Web I
+        Mata Kuliah : Pemograman Web I
     </p>
 
     <button class="toggle" onclick="toggleMode()">
-        🌙 Light / Dark Mode
+        🌙 Mode Malam
     </button>
 
     <input type="text" id="display" class="display" readonly>
